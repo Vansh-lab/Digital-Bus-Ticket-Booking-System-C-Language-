@@ -33,7 +33,8 @@ void show_seats(Route* r) {
     printf("Seat Status (0 = available, 1 = booked):\n");
     for (int i = 0; i < MAX_SEATS; i++) {
         printf("%d[%d] ", i+1, r->seats[i]);
-        if ((i+1) % 5 == 0) printf("\n");
+        if ((i+1) % 5 == 0)
+            printf("\n");
     }
 }
 
@@ -71,7 +72,7 @@ int main() {
         printf("3. Book Seat\n");
         printf("4. Cancel Seat\n");
         printf("0. Exit\n");
-        printf("Enter your choice: ");
+        printf("Enter your choice: \n");
         scanf("%d", &choice);
 
         if (choice == 0) {
@@ -81,7 +82,7 @@ int main() {
 
         if (choice >= 2 && choice <= 4) {
             show_routes();
-            printf("Select Route ID: ");
+            printf("Select Route ID: \n");
             scanf("%d", &route_choice);
             if (route_choice < 1 || route_choice > ROUTE_COUNT) {
                 printf("invalid Route.\n");
@@ -91,16 +92,20 @@ int main() {
 
         switch (choice) {
             case 1:
-                show_routes(); break;
+                show_routes();
+                break;
             case 2:
-                show_seats(&routes[route_choice - 1]); break;
+                show_seats(&routes[route_choice - 1]);
+                break;
             case 3:
-                book_seat(&routes[route_choice - 1]); break;
+                book_seat(&routes[route_choice - 1]); 
+                break;
             case 4:
-                cancel_seat(&routes[route_choice - 1]); break;
+                cancel_seat(&routes[route_choice - 1]);
+                break;
             default:
-                printf("Invalid option. Try again.\n");
+             printf("Invalid option. Try again.\n");
+              return 0;
         }
     }
-    return 0;
 }
